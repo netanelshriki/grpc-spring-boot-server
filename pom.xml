@@ -47,7 +47,55 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub netanelshriki Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/netanelshriki/grpc-spring-boot-server</url>
+        </repository>
+    </distributionManagement>
+
+    <developers>
+        <developer>
+            <name>netanel shriki</name>
+            <organization>com.github.netanelshriki</organization>
+            <organizationUrl>https://github.com/netanelshriki/grpc-spring-boot-server</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/netanelshriki/grpc-spring-boot-server.git</connection>
+        <developerConnection>
+            scm:git:https://github.com/netanelshriki/grpc-spring-boot-server.git
+        </developerConnection>
+        <url>https://maven.pkg.github.com/netanelshriki/grpc-spring-boot-server</url>
+        <tag>grpc-spring-boot-server</tag>
+    </scm>
+
+
     <build>
+<!--      start for deploy  -->
+
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>3.6.0</version>
+                    <configuration>
+                        <!-- see http://jira.codehaus.org/browse/MNG-5346 -->
+                        <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.9.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+<!--   end     -->
         <extensions>
             <extension>
                 <groupId>kr.motd.maven</groupId>
@@ -75,6 +123,30 @@
                     </execution>
                 </executions>
             </plugin>
+
+<!--            here is for deploy-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.0-M1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+<!--            end-->
         </plugins>
     </build>
 </project>
