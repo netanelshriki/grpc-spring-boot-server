@@ -15,6 +15,7 @@
     <name>grpc-spring-boot</name>
     <description>grpc-spring-boot</description>
     <packaging>jar</packaging>
+
     <properties>
 <!--        <protobuf.version>3.21.0</protobuf.version>-->
 <!--        <protobuf-plugin.version>0.6.1</protobuf-plugin.version>-->
