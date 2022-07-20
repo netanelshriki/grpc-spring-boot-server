@@ -23,8 +23,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Publish package
-          run: mvn -B deploy
-          env:
+        run: mvn -B deploy
+        env:
             GITHUB_TOKEN: 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
 
 #mvn:
