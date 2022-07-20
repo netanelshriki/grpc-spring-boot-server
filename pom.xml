@@ -9,6 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>net.dev</groupId>
+
     <artifactId>grpc-spring-boot</artifactId>
     <version>0.0.2</version>
     <name>grpc-spring-boot</name>
