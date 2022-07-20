@@ -51,15 +51,14 @@ jobs:
           java-version: '11'
           distribution: 'zulu'
           cache: maven
-      steps:
-        - uses: actions/checkout@v3
-          with:
-            fetch-depth: 0
-        - name: Check if changed files for serviceA
-          id: serviceA
-          uses: tj-actions/changed-files@v23.1
-          with:
-            files: main.yml
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+       - name: Check if changed files for serviceA
+        id: serviceA
+        uses: tj-actions/changed-files@v23.1
+        with:
+          files: main.yml
         - name: Set output for serviceA
           id: serviceA_output
           if: steps.serviceA.outputs.any_changed == 'true'
