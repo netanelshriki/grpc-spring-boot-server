@@ -8,6 +8,7 @@
         <version>2.7.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>net.dev</groupId>
 
     <artifactId>grpc-spring-boot</artifactId>
