@@ -13,7 +13,7 @@
 
 
     <artifactId>grpc-spring-boot</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <name>grpc-spring-boot</name>
     <description>grpc-spring-boot</description>
     <packaging>jar</packaging>
