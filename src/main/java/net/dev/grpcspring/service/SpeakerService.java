@@ -16,6 +16,7 @@ public class SpeakerService extends SpeakerManagerGrpc.SpeakerManagerImplBase {
                 .setAge(request.getAge())
                 .build();
 
+
         CreateSpeakerResponse response = CreateSpeakerResponse.newBuilder()
                 .setStatusCode(201)
                 .setDetails(details)
