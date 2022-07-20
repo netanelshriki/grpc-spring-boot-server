@@ -22,7 +22,6 @@ jobs:
           java-version: '11'
           distribution: 'zulu'
           cache: maven
-
       -name: Publish package
       run: mvn -B deploy
       env:
