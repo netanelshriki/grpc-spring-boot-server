@@ -22,10 +22,12 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
+      - name: Build with Maven
+        run: mvn clean install -DskipTests
       - name: Publish package
         run: mvn -B deploy
         env:
-            GITHUB_TOKEN: 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
+          GITHUB_TOKEN: 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
 
 #mvn:
 #  pkg:
