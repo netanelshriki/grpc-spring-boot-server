@@ -11,7 +11,7 @@
     <groupId>net.dev</groupId>
 
     <artifactId>grpc-spring-boot</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.4</version>
     <name>grpc-spring-boot</name>
     <description>grpc-spring-boot</description>
     <packaging>jar</packaging>
