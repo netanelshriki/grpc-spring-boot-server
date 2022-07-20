@@ -35,6 +35,7 @@
             <artifactId>grpc-protobuf</artifactId>
             <version>${grpc.version}</version>
         </dependency>
+
         <dependency>
             <!-- Java 9+ compatibility - Do NOT update to 2.0.0 -->
             <groupId>jakarta.annotation</groupId>
@@ -98,6 +99,7 @@
             </plugins>
         </pluginManagement>
 <!--   end     -->
+
         <extensions>
             <extension>
                 <groupId>kr.motd.maven</groupId>
