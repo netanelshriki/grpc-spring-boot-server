@@ -20,12 +20,12 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'zulu'
+          distribution: 'temurin'
           cache: maven
-      -name: Publish package
-      run: mvn -B deploy
-      env:
-      GITHUB\_TOKEN: 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
+      - name: Publish package
+          run: mvn -B deploy
+          env:
+            GITHUB_TOKEN: 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
 
 #mvn:
 #  pkg:
