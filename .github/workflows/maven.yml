@@ -24,7 +24,7 @@ jobs:
           cache: maven
 
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -s settings.xml
+        run: mvn deploy
         env:
           GITHUB_TOKEN: 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
 
