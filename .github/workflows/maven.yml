@@ -22,11 +22,11 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
+
       - name: Publish to GitHub Packages Apache Maven
-      run: |
-        mvn deploy -s settings.xml
-      env:
-        GITHUB_TOKEN: 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
+        run: mvn deploy -s settings.xml
+        env:
+          GITHUB_TOKEN: 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
 
 #mvn:
 #  pkg:
