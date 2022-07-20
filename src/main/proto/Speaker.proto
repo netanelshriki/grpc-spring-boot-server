@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "net.dev.speakers";
+
+
+
+service SpeakerManager {
+
+  rpc CreateSpeaker(CreateSpeakerRequest) returns (CreateSpeakerResponse) {};
+
+  rpc DeleteSpeaker(DeleteSpeakerRequest) returns (DeleteSpeakerResponse) {};
+
+}
+
+message CreateSpeakerRequest{
+  int32 id =1;
+  string name = 2;
+  string lastName = 3;
+  int32 age = 4;
+
+}
+
+message CreateSpeakerResponse{
+  int32 statusCode = 1;
+  CreateDetails details = 2;
+}
+
+message CreateDetails{
+  string message = 1;
+  string lastName = 2;
+  int32 age = 3;
+}
+
+message DeleteSpeakerRequest{
+   int32 id =1;
+}
+
+message DeleteSpeakerResponse{
+  DeleteDetails details =1;
+}
+
+message DeleteDetails{
+
+  string lastName = 2;
+  string message = 3;
+}
