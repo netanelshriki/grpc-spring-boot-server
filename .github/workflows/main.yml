@@ -1,11 +1,40 @@
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
+#name: Java CI with Maven
+#
+#on:
+#  push:
+#    branches: [ "master" ]
+#  pull_request:
+#    branches: [ "master" ]
+#
+#jobs:
+#  build:
+#
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Set up JDK 11
+#        uses: actions/setup-java@v3
+#        with:
+#          java-version: '11'
+#          distribution: 'zulu'
+#          cache: maven
+#      - name: Build with Maven
+#        run: mvn clean install -DskipTests
+#      - name: Publish package
+#        run: mvn --batch-mode -DuseGitHubPackages=true deploy
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}name: Java CI with Maven
 name: Java CI with Maven
 
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - '**/main.yml'
   pull_request:
     branches: [ "master" ]
 
@@ -22,15 +51,28 @@ jobs:
           java-version: '11'
           distribution: 'zulu'
           cache: maven
-#      - name: Cache Maven packages
-#        uses: actions/cache@v2
-#        with:
-#            path: ~/.m2/repository
-#            key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-#            restore-keys: ${{ runner.os }}-m2-
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            fetch-depth: 0
+        - name: Check if changed files for serviceA
+          id: serviceA
+          uses: tj-actions/changed-files@v23.1
+          with:
+            files: main.yml
+        - name: Set output for serviceA
+          id: serviceA_output
+          if: steps.serviceA.outputs.any_changed == 'true'
+          run: |
+            echo "::set-output name=any_changed::true"
+        outputs:
+          serviceA: steps.serviceA_output.outputs.any_changed
       - name: Build with Maven
+        needs: [ test, changedfiles ]
+          if: needs.changedfiles.outputs.serviceA
         run: mvn clean install -DskipTests
       - name: Publish package
+        if: on.push.paths.outputs.any_changed == 'true'
         run: mvn --batch-mode -DuseGitHubPackages=true deploy
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
