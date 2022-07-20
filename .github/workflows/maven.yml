@@ -23,10 +23,10 @@ jobs:
           distribution: 'zulu'
           cache: maven
 
-      - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -DskipTests
-        env:
-          GITHUB_TOKEN: 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
+      -name: Publish package
+      run: mvn -B deploy
+      env:
+      GITHUB\_TOKEN: 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
 
 #mvn:
 #  pkg:
